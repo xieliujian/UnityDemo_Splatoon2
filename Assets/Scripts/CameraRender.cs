@@ -77,11 +77,23 @@ public class CameraRender : MonoBehaviour
     }
     private bool mOpenOnceRender = false;
 
-	// Use this for initialization
-	void Start ()
+    private void Awake()
     {
-        mQuadMaterial = new Material(Shader.Find("SpraySoldier/Function/MobileDrawDecal"));
         Instance = this;
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES2 ||
+            SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3)
+        {
+            mQuadMaterial = new Material(Shader.Find("SpraySoldier/Function/MobileDrawDecal"));
+        }
+        else
+        {
+            mQuadMaterial = new Material(Shader.Find("SpraySoldier/Function/DrawDecal"));
+        }
     }
 
 	// Update is called once per frame

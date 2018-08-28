@@ -335,7 +335,7 @@ public class StaticObj_Render : MonoBehaviour
     void SetMaterial(Material mat)
     {
         mat.shader = Shader.Find("SpraySoldier/Mobile/StaticObjDecal");
-
+        
         //if (IsMobileShader(mat.shader.name))
         //{
         //    if (IsCutoffShader(mat.shader.name))
